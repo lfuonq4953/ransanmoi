@@ -20,9 +20,9 @@ function drawSnake() {
    {
       snake.update();
    }
-   //
-   // textSize(15);
-   // text("Score: " + snake.length, 0, 15);
+   
+   textSize(15);
+   text("Score: " + snake.length, 0, 15);
    food.show();
    snake.show();
 
