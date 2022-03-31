@@ -1,4 +1,5 @@
 let snake, food;
+let a=0;
 
 function setup() {
    createCanvas(WITDH, HEIGHT);
@@ -22,7 +23,7 @@ function drawSnake() {
    }
    
    textSize(15);
-   text("Score: " + snake.length, 0, 15);
+   text("Score: " + snake.length, 0, 15)
    food.show();
    snake.show();
 
@@ -41,19 +42,40 @@ function eatFood() {
    snake.length++;
    food.newFood();
 }
+document.onkeydown = keyPressed;
+function keyPressed(e) {
+       e = e || window.event;
 
-function keyPressed() {
-   if (keyCode == UP_ARROW && snake.vel.y != 1) {
+   if (e.keyCode == '38' && snake.vel.y != 1) {
       snake.vel.y = -1;
       snake.vel.x = 0;
-   } else if (keyCode == DOWN_ARROW && snake.vel.y != -1) {
+   } else if (e.keyCode == '40' && snake.vel.y != -1) {
       snake.vel.y = 1;
       snake.vel.x = 0;
-   }  else if (keyCode == LEFT_ARROW && snake.vel.x != 1) {
+   }  else if (e.keyCode == '37' && snake.vel.x != 1) {
       snake.vel.y = 0;
       snake.vel.x = -1;
-   } else if (keyCode == RIGHT_ARROW && snake.vel.x != -1) {
+   } else if (e.keyCode == '39' && snake.vel.x != -1) {
       snake.vel.y = 0;
       snake.vel.x = 1;
    }
+}
+function moveup() {
+      snake.vel.y = -1;
+      snake.vel.x = 0; 
+}
+
+function movedown() {
+      snake.vel.y = 1;
+      snake.vel.x = 0; 
+}
+
+function moveleft() {
+      snake.vel.y = 0;
+      snake.vel.x = -1; 
+}
+
+function moveright() {
+      snake.vel.y = 0;
+      snake.vel.x = 1; 
 }
